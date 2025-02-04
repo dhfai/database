@@ -1,6 +1,0 @@
-1. Tampilkan region_id dari tabel wf_countries yang memiliki jumlah negara lebih dari 3 dan rata-rata populasi lebih dari 500.000. 
-   Kelompokkan hasil berdasarkan region ID, lalu urutkan berdasarkan rata-rata populasi secara descending.
-
-2. Pada tabel employees, cari jumlah karyawan (COUNT(*)) di setiap pekerjaan (job_id) yang memiliki rata-rata gaji di atas 10.000, 
-   lalu tampilkan pekerjaan dengan nama belakang karyawan tidak mengandung huruf "a". Kelompokkan hasil berdasarkan ID pekerjaan, lalu 
-   urutkan berdasarkan jumlah karyawan secara descending.
