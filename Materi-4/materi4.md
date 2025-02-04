@@ -1,8 +1,8 @@
-# INNER JOIN, OUTER JOIN, NATURAL JOIN, USING, ON, dan SELF JOIN
+# INNER JOIN, OUTER JOIN, NATURAL JOIN, USING, dan ON
 
 ## Pengertian
 
-Ketika bekerja dengan database relasional, sering kali kita perlu menggabungkan data dari beberapa tabel berdasarkan kolom yang memiliki hubungan. SQL menyediakan berbagai cara untuk melakukan ini, termasuk `INNER JOIN`, `OUTER JOIN`, `NATURAL JOIN`, `USING`, `ON`, dan `SELF JOIN`. Setiap metode memiliki fungsinya sendiri sesuai dengan kebutuhan penggabungan data.
+Ketika bekerja dengan database relasional, sering kali kita perlu menggabungkan data dari beberapa tabel berdasarkan kolom yang memiliki hubungan. SQL menyediakan berbagai cara untuk melakukan ini, termasuk `INNER JOIN`, `OUTER JOIN`, `NATURAL JOIN`, `USING`, dan `ON`. Setiap metode memiliki fungsinya sendiri sesuai dengan kebutuhan penggabungan data.
 
 | JOIN Type      | Cara Kerja |
 |---------------|------------|
@@ -11,7 +11,155 @@ Ketika bekerja dengan database relasional, sering kali kita perlu menggabungkan 
 | **NATURAL JOIN** | Menggabungkan tabel secara otomatis berdasarkan kolom yang sama tanpa menyebutkan kolomnya. |
 | **USING**       | Menggabungkan tabel berdasarkan kolom tertentu yang disebutkan secara eksplisit dalam `USING(kolom)`. |
 | **ON**       | Menggabungkan tabel berdasarkan kondisi yang ditentukan secara eksplisit, bahkan jika nama kolom berbeda. |
-| **SELF JOIN** | Menggabungkan tabel dengan dirinya sendiri untuk membandingkan data dalam satu tabel. |
+
+## Contoh Perbandingan JOIN dalam SQL
+
+Misalkan kita memiliki dua tabel: **employees** dan **departments**.
+
+### Tabel **employees**
+| employee_id  | name   | department_id |
+|-------------|-----------|--------------|
+| 1           | Klara     | D001         |
+| 2           | Emilia    | D002         |
+| 3           | Robert    | D003         |
+| 4           | Satria    | D004         |
+
+### Tabel **departments**
+| department_id | department_name |
+|--------------|----------------|
+| D001        | HR              |
+| D002        | IT              |
+| D003        | Finance         |
+
+### 🔹 Contoh INNER JOIN
+```sql
+SELECT employees.name, departments.department_name
+FROM employees
+INNER JOIN departments
+ON employees.department_id = departments.department_id;
+```
+#### Hasil:
+| name   | department_name |
+|--------|---------------|
+| Klara  | HR            |
+| Emilia | IT            |
+| Robert | Finance       |
+
+**Penjelasan:**
+- `INNER JOIN` hanya menampilkan data yang memiliki kecocokan di kedua tabel.
+- Karyawan dengan `department_id` yang tidak ditemukan di tabel departments (misalnya Satria) tidak akan ditampilkan.
+
+### 🔹 Contoh OUTER JOIN
+#### 🔹 LEFT JOIN (LEFT OUTER JOIN)
+```sql
+SELECT employees.name, departments.department_name
+FROM employees
+LEFT JOIN departments
+ON employees.department_id = departments.department_id;
+```
+#### Hasil:
+| name   | department_name |
+|--------|---------------|
+| Klara  | HR            |
+| Emilia | IT            |
+| Robert | Finance       |
+| Satria | NULL          |
+
+**Penjelasan:**
+- Semua karyawan ditampilkan, termasuk yang tidak memiliki departemen yang cocok.
+- Satria tetap muncul, tetapi `department_name` bernilai `NULL` karena `department_id = D004` tidak ditemukan di tabel `departments`.
+
+#### 🔹 RIGHT JOIN (RIGHT OUTER JOIN)
+```sql
+SELECT employees.name, departments.department_name
+FROM employees
+RIGHT JOIN departments
+ON employees.department_id = departments.department_id;
+```
+#### Hasil:
+| name   | department_name |
+|--------|---------------|
+| Klara  | HR            |
+| Emilia | IT            |
+| Robert | Finance       |
+| NULL   | Operations    |
+
+**Penjelasan:**
+- Semua departemen ditampilkan, termasuk yang tidak memiliki karyawan yang cocok.
+- Jika ada departemen yang tidak memiliki karyawan, maka `name` bernilai `NULL`.
+
+#### 🔹 FULL JOIN (FULL OUTER JOIN)
+```sql
+SELECT employees.name, departments.department_name
+FROM employees
+FULL JOIN departments
+ON employees.department_id = departments.department_id;
+```
+#### Hasil:
+| name   | department_name |
+|--------|---------------|
+| Klara  | HR            |
+| Emilia | IT            |
+| Robert | Finance       |
+| Satria | NULL          |
+| NULL   | Operations    |
+
+**Penjelasan:**
+- Semua data dari kedua tabel ditampilkan.
+- Satria tetap muncul meskipun tidak memiliki departemen.
+- Jika ada departemen yang tidak memiliki karyawan, departemen tetap ditampilkan dengan nilai `NULL` pada kolom `name`.
+
+### 🔹 Contoh NATURAL JOIN
+```sql
+SELECT employee_id, name, department_name
+FROM employees
+NATURAL JOIN departments;
+```
+#### Hasil:
+| employee_id | name   | department_name |
+|------------|--------|---------------|
+| 1          | Klara  | HR            |
+| 2          | Emilia | IT            |
+| 3          | Robert | Finance       |
+
+**Penjelasan:**
+- `NATURAL JOIN` otomatis mencocokkan tabel berdasarkan kolom dengan nama yang sama (`department_id`).
+
+### 🔹 Contoh USING
+```sql
+SELECT employee_id, name, department_name
+FROM employees
+JOIN departments
+USING (department_id);
+```
+#### Hasil:
+| employee_id | name   | department_name |
+|------------|--------|---------------|
+| 1          | Klara  | HR            |
+| 2          | Emilia | IT            |
+| 3          | Robert | Finance       |
+
+**Penjelasan:**
+- Dengan `USING`, kita harus menyebutkan kolom yang akan dicocokkan (`department_id`).
+
+### 🔹 Contoh ON
+```sql
+SELECT employees.name, departments.department_name
+FROM employees
+JOIN departments
+ON employees.department_id = departments.department_id;
+```
+#### Hasil:
+| name   | department_name |
+|--------|---------------|
+| Klara  | HR            |
+| Emilia | IT            |
+| Robert | Finance       |
+
+**Kenapa menggunakan ON?**
+- `ON` digunakan karena nama kolom berbeda di kedua tabel (`department_id` di `employees` dan `department_id` di `departments`).
+- Memberikan fleksibilitas lebih jika ada kondisi tambahan yang ingin diterapkan.
+
 
 ## SELF JOIN dalam SQL
 
@@ -110,3 +258,16 @@ ON C1.spouse_id = C2.customer_id;
 | **SELF JOIN** | Berguna untuk menampilkan hubungan dalam satu tabel | Bisa membingungkan jika tidak diberi alias tabel | Saat bekerja dengan data hierarki atau hubungan dalam satu tabel |
 
 Dengan memahami perbedaan masing-masing tipe JOIN, kita dapat memilih metode yang paling sesuai dengan kebutuhan data yang akan kita analisis atau tampilkan dalam SQL.
+
+## Kapan Menggunakan INNER JOIN, OUTER JOIN, NATURAL JOIN, USING, atau ON?
+
+| Situasi | Gunakan |
+|---------|------------|
+| Hanya ingin menampilkan data yang cocok di kedua tabel | `INNER JOIN` |
+| Ingin menampilkan semua data dari tabel kiri | `LEFT JOIN` |
+| Ingin menampilkan semua data dari tabel kanan | `RIGHT JOIN` |
+| Ingin menampilkan semua data dari kedua tabel | `FULL JOIN` |
+| Kolom yang dicocokkan pasti sama | `NATURAL JOIN` |
+| Ada lebih dari satu kolom yang sama, tetapi ingin mencocokkan kolom tertentu saja | `USING` |
+| Nama kolom berbeda di kedua tabel, atau ada kondisi tambahan dalam JOIN | `ON` |
+
