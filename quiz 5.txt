@@ -1,0 +1,20 @@
+Soal 1: Gaji Rata-Rata Pegawai dalam Setiap Departemen
+Tampilkan department_id dan gaji rata-rata dari tabel EMPLOYEES.
+Hanya tampilkan departemen yang memiliki gaji rata-rata di atas 5000.
+Urutkan hasil berdasarkan gaji rata-rata secara descending.
+
+Soal 2: Departemen dengan Jumlah Pegawai Terbanyak
+Hitung jumlah pegawai dalam setiap departemen dari tabel EMPLOYEES.
+Tampilkan department_id dan jumlah pegawai (COUNT(*)).
+Hanya tampilkan departemen dengan jumlah pegawai terbanyak.
+Urutkan hasil dari jumlah pegawai terbanyak ke paling sedikit.
+
+Soal 3: Negara dengan Jumlah Populasi Tertinggi
+Dari tabel WF_COUNTRIES, temukan negara dengan populasi tertinggi.
+Tampilkan country_name dan population.
+Urutkan dari yang memiliki populasi terbesar ke terkecil.
+
+Soal 4: Klien dengan Event Terbanyak
+Dari tabel D_EVENTS, temukan klien yang memiliki event terbanyak.
+Tampilkan client_number dan jumlah event (COUNT(*)).
+Urutkan dari yang memiliki jumlah event terbanyak ke paling sedikit.

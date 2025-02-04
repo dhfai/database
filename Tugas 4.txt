@@ -1,0 +1,35 @@
+1. Penentuan Deskripsi Pekerjaan Berdasarkan Departemen
+   Tampilkan nama belakang karyawan (last_name), ID pekerjaan (job_id), dan deskripsi pekerjaan berdasarkan kondisi berikut:
+   - Gunakan CASE untuk menentukan deskripsi departemen berdasarkan department_id:
+     - 90: "Executive Management"
+     - 80: "Sales and Marketing"
+     - 60: "Information Technology"
+   - Lainnya: "General Staff"
+   - Tambahkan kolom Department Description di hasil query Anda.
+   Catatan: Gabungkan tabel employees dan departments menggunakan INNER JOIN agar deskripsi departemen dapat diakses.
+
+2. Koneksi Hierarki dengan Informasi Departemen
+   Susun hierarki karyawan dimulai dari employee_id = 100. Tampilkan data berikut:
+   - employee_id
+   - last_name
+   - manager_id
+   - department_name
+   Level hierarki karyawan dalam organisasi (gunakan fungsi bawaan seperti LEVEL).
+   Gabungkan tabel employees dan departments menggunakan OUTER JOIN sehingga nama departemen tetap ditampilkan meskipun ada karyawan yang 
+   tidak memiliki departemen.
+   Tambahkan kondisi berikut:
+   - Hanya tampilkan karyawan dengan job_id yang dimulai dengan huruf "S".
+   - Urutkan data berdasarkan level hierarki (LEVEL) dan nama belakang karyawan (last_name).
+
+3. Laporan Pekerjaan dan Lokasi
+   Buat laporan gabungan yang menampilkan informasi pekerjaan dan lokasi departemen. Tampilkan data berikut:
+   - Nama departemen (department_name)
+   - Lokasi kota departemen (city)
+   - Judul pekerjaan (job_title)
+   - Jumlah total karyawan yang memiliki pekerjaan tersebut di setiap departemen.
+   Gunakan langkah berikut:
+   1. Gabungkan tabel departments, locations, employees, dan jobs menggunakan kombinasi NATURAL JOIN dan USING.
+   2. Gunakan fungsi agregasi COUNT untuk menghitung jumlah karyawan di setiap departemen dan pekerjaan.
+   3. Urutkan hasil berdasarkan nama departemen dan judul pekerjaan secara alfabetis.
+   Tambahan:
+   Jika sebuah departemen tidak memiliki karyawan, tetap tampilkan nama departemen dan lokasi kota dengan jumlah karyawan bernilai 0.
