@@ -7,14 +7,14 @@ Ketika bekerja dengan database relasional, sering kali kita perlu menggabungkan 
 
 ## Summary: Kelebihan, Kekurangan, dan Kapan Menggunakannya
 
-| JOIN Type      | Kelebihan | Kekurangan | Kapan Digunakan? |
-|---------------|----------|-----------|----------------|
-| **INNER JOIN** | Hanya menampilkan data yang cocok, lebih efisien | Data yang tidak cocok di kedua tabel akan hilang | Saat hanya ingin melihat data yang berelasi di kedua tabel |
-| **OUTER JOIN** | Menampilkan semua data meskipun tidak ada kecocokan | Bisa menghasilkan banyak NULL jika banyak data tidak cocok | Jika ingin melihat semua data meskipun tidak memiliki pasangan |
-| **NATURAL JOIN** | Otomatis mencocokkan kolom yang sama | Bisa salah jika ada lebih dari satu kolom dengan nama yang sama | Jika yakin ada satu kolom kunci yang cocok |
-| **USING** | Eksplisit menyebutkan kolom yang dicocokkan | Tidak bisa digunakan jika kolom memiliki nama yang berbeda | Jika ingin memastikan kolom yang dipakai untuk join |
-| **ON** | Fleksibel untuk mencocokkan nama kolom yang berbeda | Harus menentukan kondisi secara eksplisit | Jika kolom yang digunakan untuk join memiliki nama berbeda |
-| **SELF JOIN** | Berguna untuk menampilkan hubungan dalam satu tabel | Bisa membingungkan jika tidak diberi alias tabel | Saat bekerja dengan data hierarki atau hubungan dalam satu tabel |
+| JOIN Type      | Kelebihan | Kekurangan |
+|---------------|----------|-----------|
+| **INNER JOIN** | Hanya menampilkan data yang cocok, lebih efisien | Data yang tidak cocok di kedua tabel akan hilang |
+| **OUTER JOIN** | Menampilkan semua data meskipun tidak ada kecocokan | Bisa menghasilkan banyak NULL jika banyak data tidak cocok |
+| **NATURAL JOIN** | Otomatis mencocokkan kolom yang sama | Bisa salah jika ada lebih dari satu kolom dengan nama yang sama |
+| **USING** | Eksplisit menyebutkan kolom yang dicocokkan | Tidak bisa digunakan jika kolom memiliki nama yang berbeda |
+| **ON** | Fleksibel untuk mencocokkan nama kolom yang berbeda | Harus menentukan kondisi secara eksplisit |
+| **SELF JOIN** | Berguna untuk menampilkan hubungan dalam satu tabel | Bisa membingungkan jika tidak diberi alias tabel |
 
 Dengan memahami perbedaan masing-masing tipe JOIN, kita dapat memilih metode yang paling sesuai dengan kebutuhan data yang akan kita analisis atau tampilkan dalam SQL.
 
