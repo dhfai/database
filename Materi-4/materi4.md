@@ -5,6 +5,14 @@
 Ketika bekerja dengan database relasional, sering kali kita perlu menggabungkan data dari beberapa tabel berdasarkan kolom yang memiliki hubungan. SQL menyediakan berbagai cara untuk melakukan ini, termasuk `INNER JOIN`, `OUTER JOIN`, `NATURAL JOIN`, `USING`, dan `ON`. Setiap metode memiliki fungsinya sendiri sesuai dengan kebutuhan penggabungan data.
 
 
+| JOIN Type      | Cara Kerja |
+|---------------|------------|
+| **NATURAL JOIN** | Menggabungkan tabel secara otomatis berdasarkan kolom yang sama tanpa menyebutkan kolomnya. |
+| **USING**       | Menggabungkan tabel berdasarkan kolom tertentu yang disebutkan secara eksplisit dalam `USING(kolom)`. |
+| **ON**       | Menggabungkan tabel berdasarkan kondisi yang ditentukan secara eksplisit, bahkan jika nama kolom berbeda. |
+| **INNER JOIN** | Mengembalikan hanya baris yang memiliki kecocokan di kedua tabel. |
+| **OUTER JOIN** | Mengembalikan semua data dari satu atau kedua tabel, meskipun tidak ada kecocokan. |s
+
 ## Summary: Kelebihan, Kekurangan, dan Kapan Menggunakannya
 
 | JOIN Type      | Kelebihan | Kekurangan |
@@ -15,6 +23,8 @@ Ketika bekerja dengan database relasional, sering kali kita perlu menggabungkan 
 | **USING** | Eksplisit menyebutkan kolom yang dicocokkan | Tidak bisa digunakan jika kolom memiliki nama yang berbeda |
 | **ON** | Fleksibel untuk mencocokkan nama kolom yang berbeda | Harus menentukan kondisi secara eksplisit |
 | **SELF JOIN** | Berguna untuk menampilkan hubungan dalam satu tabel | Bisa membingungkan jika tidak diberi alias tabel |
+
+
 
 Dengan memahami perbedaan masing-masing tipe JOIN, kita dapat memilih metode yang paling sesuai dengan kebutuhan data yang akan kita analisis atau tampilkan dalam SQL.
 
